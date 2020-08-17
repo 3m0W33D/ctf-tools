@@ -2,12 +2,39 @@
 
 git clone --depth 1 https://github.com/pwndbg/pwndbg
 
-source ctf-tools-venv-activate3
+source ctf-tools-venv-activate
+
+PYTHON=''
+INSTALLFLAGS=''
 
 pushd pwndbg
-pip install -Ur ./requirements.txt
 
 git submodule update --init --recursive
+
+PYVER=$(gdb -batch -q --nx -ex 'pi import platform; print(".".join(platform.python_version_tuple()[:2]))')
+PYTHON+=$(gdb -batch -q --nx -ex 'pi import sys; print(sys.executable)')
+PYTHON+="${PYVER}"
+
+# Find the Python site-packages that we need to use so that
+# GDB can find the files once we've installed them.
+if linux && [ -z "$INSTALLFLAGS"  ]; then
+    SITE_PACKAGES=$(gdb -batch -q --nx -ex 'pi import site; print(site.getsitepackages()[0])')
+        INSTALLFLAGS="--target ${SITE_PACKAGES}"
+fi
+
+# Make sure that pip is available
+if ! ${PYTHON} -m pip -V; then
+        ${PYTHON} -m ensurepip ${INSTALLFLAGS} --upgrade
+fi
+
+# Upgrade pip itself
+${PYTHON} -m pip install ${INSTALLFLAGS} --upgrade pip
+
+# Install Python dependencies
+${PYTHON} -m pip install ${INSTALLFLAGS} -Ur requirements.txt
+
+pip install -Ur ./requirements.txt
+
 popd
 
 mkdir bin
