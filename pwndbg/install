@@ -2,7 +2,7 @@
 
 git clone --depth 1 https://github.com/pwndbg/pwndbg
 
-source ctf-tools-venv-activate
+source ctf-tools-venv-activate3
 
 PYTHON=''
 INSTALLFLAGS=''
