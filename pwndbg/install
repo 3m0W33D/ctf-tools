@@ -38,11 +38,11 @@ pip install -Ur ./requirements.txt
 popd
 
 mkdir bin
-cat >> bin/pwndbg <<EOF
+cat >> bin/gdb-pwndbg <<EOF
 #!/bin/sh
 exec gdb -q -ex init-pwndbg "\$@"
 EOF
-chmod +rx bin/pwndbg
+chmod +rx bin/gdb-pwndbg
 
 cd pwndbg
 # make sure gdbinit exists
