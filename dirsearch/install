@@ -4,4 +4,4 @@ mkdir bin
 git clone --depth 1 https://github.com/maurosoria/dirsearch.git
 
 cd bin
-ln -s ../dirsearch/dirsearch.py .
+ln -s ../dirsearch/dirsearch.py dirsearch
