@@ -1,3 +1,11 @@
 #!/bin/bash -ex
 
 ctf-tools-pip3 install git+https://github.com/byt3bl33d3r/CrackMapExec
+
+mkdir bin
+cat >> bin/cme <<EOF
+#!/bin/bash
+source ctf-tools-venv-activate3
+exec cme "\$@"
+EOF
+chmod +rx bin/cmee
