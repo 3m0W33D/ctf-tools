@@ -39,7 +39,8 @@ popd
 
 mkdir bin
 cat >> bin/gdb-pwndbg <<EOF
-#!/bin/sh
+#!/bin/bash
+source ctf-tools-venv-activate3
 exec gdb -q -ex init-pwndbg "\$@"
 EOF
 chmod +rx bin/gdb-pwndbg
