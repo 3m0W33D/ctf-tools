@@ -5,4 +5,4 @@ export CTF_TOOLS_VE="ctftools3"
 
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
-source "$DIR/ctf-tools-venv-activate"
+ source "$DIR/ctf-tools-venv-activate" 2>/dev/null || source ctf-tools-venv-activate
