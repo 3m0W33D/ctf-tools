@@ -8,4 +8,4 @@ cat >> bin/cme <<EOF
 source ctf-tools-venv-activate3
 exec cme "\$@"
 EOF
-chmod +rx bin/cmee
+chmod +rx bin/cme
