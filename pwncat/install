@@ -1,3 +1,11 @@
 #!/bin/bash -ex
 
 ctf-tools-pip3 install git+https://github.com/calebstewart/pwncat.git
+
+mkdir bin
+cat >> bin/pwncat <<EOF
+#!/bin/bash
+source ctf-tools-venv-activate3
+exec pwncat "\$@"
+EOF
+chmod +rx bin/pwncat
