@@ -37,14 +37,6 @@ pip install -Ur ./requirements.txt
 
 popd
 
-mkdir bin
-cat >> bin/gdb-pwndbg <<EOF
-#!/bin/bash
-source ctf-tools-venv-activate3
-exec gdb -q -ex init-pwndbg "\$@"
-EOF
-chmod +rx bin/gdb-pwndbg
-
 cd pwndbg
 # make sure gdbinit exists
 touch ~/.gdbinit
