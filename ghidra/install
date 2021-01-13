@@ -2,6 +2,7 @@
 
 ghidra=$(curl -s https://ghidra-sre.org/ | grep 'href="ghidra'| cut -d '"' -f 6)
 wget https://ghidra-sre.org/$ghidra -O ghidra.zip
+unzip ghidra
 mkdir -p bin
 cd bin
 ln -s ../ghidra_*/ghidraRun ghidra
